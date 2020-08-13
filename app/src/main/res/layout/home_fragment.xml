@@ -12,7 +12,9 @@
         android:layout_height="50dp"
         android:background="@color/top_layer"
         android:layoutDirection="rtl"
-        app:tabIndicatorColor="@color/newBackground" />
+        app:tabIndicatorColor="@color/newBackground"
+        app:tabTextColor="@android:color/white"
+        app:tabTextAppearance="@style/tab_text"/>
 
     <com.duolingo.open.rtlviewpager.RtlViewPager
         android:id="@+id/view_pager_id"
