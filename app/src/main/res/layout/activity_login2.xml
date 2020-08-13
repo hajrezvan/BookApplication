@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backGround"
+    tools:context=".LoginActivity2"
+
+    tools:ignore="PrivateResource">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/top_layer" />
+
+    <LinearLayout
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:background="@drawable/user_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="125dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/user01"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/username_loginForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:hint="نام کاربری خود را وادر کنید:"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/newBackground"
+        android:textColorHint="@android:color/white"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/username_loginForm"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_selector"
+        android:text="ورود به برنامه"
+        android:textColor="@android:color/white"
+        android:id="@+id/enter_button"
+        tools:ignore="HardcodedText" />
+
+
+</RelativeLayout>

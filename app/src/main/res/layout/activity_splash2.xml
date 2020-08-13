@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backGround"
+    tools:context=".SplashActivity2"
+    tools:ignore="PrivateResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:background="@color/border"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/newBackground"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/mohr_01"/>
+
+
+</RelativeLayout>

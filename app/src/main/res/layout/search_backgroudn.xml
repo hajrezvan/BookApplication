@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/backGround"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/browsing2"
+        android:contentDescription="TODO" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:clickable="false"
+        android:fontFamily="@font/bkoodak"
+        android:maxLines="1"
+        android:text="نام دانشمند را وارد کنید ..."
+        android:textColor="@android:color/white"
+        android:background="@null"
+        android:textSize="15dp" />
+
+
+</LinearLayout>
