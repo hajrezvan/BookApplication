@@ -2,7 +2,44 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp">
+    android:layout_marginBottom="5dp"
+    android:background="@color/backGround">
+
+    <LinearLayout
+        android:id="@+id/item_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/item_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="70dp"
+            android:fontFamily="@font/bkoodak"
+            android:text="کارگروه کامپبوتر و فناوری اطلاعات"
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/field_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/btitr"
+            android:text="سرپرست کار: جناب استاد غلامی"
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="100dp"
@@ -12,9 +49,9 @@
         android:gravity="center">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_id"
             android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:id="@+id/image_id"/>
+            android:layout_height="90dp" />
 
     </LinearLayout>
 
