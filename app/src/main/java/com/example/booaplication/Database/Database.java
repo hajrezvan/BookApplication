@@ -29,12 +29,10 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
     }
 
     public void isDatabase() {
@@ -49,7 +47,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public void copyDataBase() {
-
         try {
             InputStream myInput = context.getAssets().open(InfoDb.DATABASE_SOURCE);
 
@@ -77,7 +74,6 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-
                 Person person = new Person();
                 person.setId(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_ID)));
                 person.setCategory(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_CATEGORY)));
@@ -87,12 +83,10 @@ public class Database extends SQLiteOpenHelper {
                 person.setImage(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_IMAGE)));
                 person.setFavorite(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_FAVORITE)));
                 data.add(person);
-
             } while (cursor.moveToNext());
         }
         cursor.close();
         database.close();
-
         return data;
     }
 
@@ -103,7 +97,6 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-
                 Person person = new Person();
                 person.setId(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_ID)));
                 person.setCategory(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_CATEGORY)));
@@ -113,12 +106,10 @@ public class Database extends SQLiteOpenHelper {
                 person.setImage(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_IMAGE)));
                 person.setFavorite(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_FAVORITE)));
                 data.add(person);
-
             } while (cursor.moveToNext());
         }
         cursor.close();
         database.close();
-
         return data;
     }
 
@@ -129,7 +120,6 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-
                 Person person = new Person();
                 person.setId(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_ID)));
                 person.setCategory(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_CATEGORY)));
@@ -139,13 +129,10 @@ public class Database extends SQLiteOpenHelper {
                 person.setImage(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_IMAGE)));
                 person.setFavorite(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_FAVORITE)));
                 data.add(person);
-
             } while (cursor.moveToNext());
         }
         cursor.close();
         database.close();
-
         return data;
     }
-
 }
