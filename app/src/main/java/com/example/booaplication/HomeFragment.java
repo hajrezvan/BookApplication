@@ -37,10 +37,10 @@ public class HomeFragment extends Fragment {
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout_id);
         viewPager = (RtlViewPager) view.findViewById(R.id.view_pager_id);
         adapter = new HomeAdapter(getChildFragmentManager());
-        IranFragment fragment = new IranFragment();
+        EngineeringFragment fragment = new EngineeringFragment();
         KharejFragment fragment1 = new KharejFragment();
-        adapter.addFragment(fragment,"ایرانی");
-        adapter.addFragment(fragment1, "خارجی");
+        adapter.addFragment(fragment,"غیر مهندسی");
+        adapter.addFragment(fragment1, "مهندسی");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }

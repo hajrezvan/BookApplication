@@ -93,7 +93,7 @@ public class Database extends SQLiteOpenHelper {
     public List<Person> getIranPerson() {
         SQLiteDatabase database = this.getReadableDatabase();
         List<Person> data = new ArrayList<>();
-        String query = "SELECT * FROM person WHERE category = 'iran'";
+        String query = "SELECT * FROM person WHERE category = 'engineering'";
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
@@ -116,7 +116,7 @@ public class Database extends SQLiteOpenHelper {
     public List<Person> getForeignPerson() {
         SQLiteDatabase database = this.getReadableDatabase();
         List<Person> data = new ArrayList<>();
-        String query = "SELECT * FROM person WHERE category = 'foreign'";
+        String query = "SELECT * FROM person WHERE category = 'notengineering'";
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
