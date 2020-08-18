@@ -3,6 +3,7 @@
     <extensionMap>
       <mapping ext="webp" type="Image" />
       <mapping pattern="testFile" type="JAVA" />
+      <mapping ext="db" type="SQL" />
     </extensionMap>
   </component>
 </application>
