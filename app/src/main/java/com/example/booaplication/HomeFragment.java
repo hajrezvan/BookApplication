@@ -39,8 +39,8 @@ public class HomeFragment extends Fragment {
         adapter = new HomeAdapter(getChildFragmentManager());
         EngineeringFragment fragment = new EngineeringFragment();
         KharejFragment fragment1 = new KharejFragment();
-        adapter.addFragment(fragment,"غیر مهندسی");
-        adapter.addFragment(fragment1, "مهندسی");
+        adapter.addFragment(fragment, "مهندسی");
+        adapter.addFragment(fragment1,"غیر مهندسی");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }

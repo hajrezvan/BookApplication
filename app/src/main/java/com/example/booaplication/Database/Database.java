@@ -1,4 +1,4 @@
-package com.example.booaplication.Database;
+package com.example.booaplication.DataBase;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -21,8 +21,8 @@ public class Database extends SQLiteOpenHelper {
 
     private Context context;
 
-    public Database(@Nullable Context context) {
-        super(context, InfoDb.DATABASE_NAME, null, InfoDb.DATABASE_VERSION);
+    public Database(@Nullable Context context) throws IOException {
+        super(context, info_db.DATABASE_NAME, null, info_db.DATABASE_VERSION);
         this.context = context;
         isDatabase();
     }
@@ -35,36 +35,31 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
     }
 
-    public void isDatabase() {
-        File check = new File(InfoDb.PACKAGE);
+    public void isDatabase() throws IOException {
+        File check = new File(info_db.PACKAGE);
         if (!check.exists()) {
-            check.mkdirs();
+            boolean checker = check.mkdirs();
+            System.err.println("Checker is: " + checker);
         }
-        check = context.getDatabasePath(InfoDb.DATA_NAME);
+        check = context.getDatabasePath(info_db.DATA_NAME);
         if (!check.exists()) {
             copyDataBase();
         }
     }
 
-    public void copyDataBase() {
-        try {
-            InputStream myInput = context.getAssets().open(InfoDb.DATABASE_SOURCE);
+    private void copyDataBase() throws IOException {
 
-            String outFileName = InfoDb.PACKAGE + InfoDb.DATABASE_NAME;
-
-            OutputStream myOutput = new FileOutputStream(outFileName);
-
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = myInput.read(buffer)) > 0) {
-                myOutput.write(buffer, 0, length);
-                myOutput.flush();
-                myOutput.close();
-                myInput.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        InputStream myInput = context.getAssets().open(info_db.DATABASE_SOURCE);
+        String outFileName = info_db.PACKAGE + info_db.DATABASE_NAME;
+        OutputStream myOutput = new FileOutputStream(outFileName);
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = myInput.read(buffer)) > 0) {
+            myOutput.write(buffer, 0, length);
         }
+        myOutput.flush();
+        myOutput.close();
+        myInput.close();
     }
 
     public List<Person> getAllPerson() {
@@ -74,15 +69,7 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                Person person = new Person();
-                person.setId(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_ID)));
-                person.setCategory(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_CATEGORY)));
-                person.setDisc(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_DISC)));
-                person.setName(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_NAME)));
-                person.setField(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_FIELD)));
-                person.setImage(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_IMAGE)));
-                person.setFavorite(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_FAVORITE)));
-                data.add(person);
+                createPerson(cursor, data);
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -97,20 +84,24 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                Person person = new Person();
-                person.setId(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_ID)));
-                person.setCategory(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_CATEGORY)));
-                person.setDisc(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_DISC)));
-                person.setName(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_NAME)));
-                person.setField(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_FIELD)));
-                person.setImage(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_IMAGE)));
-                person.setFavorite(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_FAVORITE)));
-                data.add(person);
+                createPerson(cursor, data);
             } while (cursor.moveToNext());
         }
         cursor.close();
         database.close();
         return data;
+    }
+
+    public void createPerson(Cursor cursor, List<Person> data) {
+        Person person = new Person();
+        person.setId(cursor.getInt(cursor.getColumnIndex(info_db.DATA_ID)));
+        person.setCategory(cursor.getString(cursor.getColumnIndex(info_db.DATA_CATEGORY)));
+        person.setName(cursor.getString(cursor.getColumnIndex(info_db.DATA_NAME)));
+        person.setField(cursor.getString(cursor.getColumnIndex(info_db.DATA_FIELD)));
+        person.setDisc(cursor.getString(cursor.getColumnIndex(info_db.DATA_DISC)));
+        person.setImage(cursor.getString(cursor.getColumnIndex(info_db.DATA_IMAGE)));
+        person.setFavorite(cursor.getInt(cursor.getColumnIndex(info_db.DATA_FAVORITE)));
+        data.add(person);
     }
 
     public List<Person> getForeignPerson() {
@@ -120,15 +111,7 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                Person person = new Person();
-                person.setId(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_ID)));
-                person.setCategory(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_CATEGORY)));
-                person.setDisc(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_DISC)));
-                person.setName(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_NAME)));
-                person.setField(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_FIELD)));
-                person.setImage(cursor.getString(cursor.getColumnIndex(InfoDb.DATA_IMAGE)));
-                person.setFavorite(cursor.getInt(cursor.getColumnIndex(InfoDb.DATA_FAVORITE)));
-                data.add(person);
+                createPerson(cursor, data);
             } while (cursor.moveToNext());
         }
         cursor.close();
