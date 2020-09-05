@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booaplication.ContentActivity2;
@@ -19,12 +20,12 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FavAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
     private List<Person> personList;
 
-    public PersonAdapter(Context context, List<Person> personList) {
+    public FavAdapter(Context context, List<Person> personList) {
         this.context = context;
         this.personList = personList;
     }
@@ -32,7 +33,7 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.profile_item, parent, false);
         return new ItemViewHolder(view);
     }
 
@@ -40,9 +41,7 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
         itemViewHolder.name.setText(personList.get(position).getName());
-        itemViewHolder.field.setText(personList.get(position).getField());
-
-        Picasso.with(context).load(personList.get(position).getImage()).resize(128,128).into(itemViewHolder.imageView);
+        Picasso.with(context).load(personList.get(position).getImage()).resize(128, 128).into(itemViewHolder.imageView);
 
         itemViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,23 +62,19 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return personList.size();
     }
 
-    public void filterList(List<Person> personList) {
-        this.personList = personList;
-        notifyDataSetChanged();
-    }
-
-    private class ItemViewHolder extends RecyclerView.ViewHolder {
+    private static class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private CircleImageView imageView;
-        private TextView name,field;
+        private TextView name;
+        private CardView item;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = (CircleImageView) itemView.findViewById(R.id.image_id);
             name = (TextView) itemView.findViewById(R.id.name_id);
-            field = (TextView) itemView.findViewById(R.id.field_id);
-
+            item = (CardView) itemView.findViewById(R.id.item_id);
         }
     }
 }
+

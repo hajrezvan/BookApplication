@@ -36,14 +36,16 @@
             android:textSize="20dp" />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <include layout="@layout/profile_bg" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="7dp" />
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

@@ -92,6 +92,21 @@ public class Database extends SQLiteOpenHelper {
         return data;
     }
 
+    public List<Person> getFavPerson() {
+        SQLiteDatabase database = this.getReadableDatabase();
+        List<Person> data = new ArrayList<>();
+        String query = "SELECT * FROM person WHERE fav = 1";
+        Cursor cursor = database.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                createPerson(cursor, data);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        database.close();
+        return data;
+    }
+
     public void createPerson(Cursor cursor, List<Person> data) {
         Person person = new Person();
         person.setId(cursor.getInt(cursor.getColumnIndex(info_db.DATA_ID)));
@@ -117,5 +132,28 @@ public class Database extends SQLiteOpenHelper {
         cursor.close();
         database.close();
         return data;
+    }
+
+    public int favValue(int id) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "SELECT " + info_db.DATA_FAVORITE + " FROM person WHERE " + info_db.DATA_ID + " = " + id + "";
+        int value = 0;
+        try (Cursor cursor = database.rawQuery(query, null)) {
+            if (cursor.moveToFirst()) {
+                value = cursor.getInt(cursor.getColumnIndex(info_db.DATA_FAVORITE));
+                do {
+
+                } while (cursor.moveToNext());
+            }
+            database.close();
+            return value;
+        }
+    }
+
+    public void fav(int status, int id) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "UPDATE person SET " + info_db.DATA_FAVORITE + " = " + status + " WHERE " + info_db.DATA_ID + " = " + id + "";
+        database.execSQL(query);
+        database.close();
     }
 }
